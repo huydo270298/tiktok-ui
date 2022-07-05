@@ -3,6 +3,7 @@ const images = {
   icon_search: require('~/assets/images/icon_search.svg').default,
   icon_search_reset: require('~/assets/images/icon_search_reset.svg').default,
   icon_check: require('~/assets/images/icon_check.svg').default,
+  icon_add: require('~/assets/images/icon_add.svg').default,
 };
 
 export default images;

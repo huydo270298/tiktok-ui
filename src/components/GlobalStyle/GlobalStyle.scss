@@ -31,4 +31,14 @@ button {
 
 button {
   cursor: pointer;
+
+  &[disabled] {
+    opacity: 0.5;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+[href] {
+  text-decoration: none;
 }

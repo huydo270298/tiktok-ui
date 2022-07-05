@@ -7,6 +7,7 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -56,7 +57,7 @@ function Header() {
           )}
         >
           <div className={cx('search')}>
-            <input placeholder="Search accounts and videos" spellCheck="false" />
+            <input placeholder="Tìm kiếm tài khoản và video" spellCheck="false" />
             <button className={cx('clear')}>
               <i className={cx('icon-reset')}>
                 <img src={images.icon_search_reset} alt="" />
@@ -72,7 +73,16 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className={cx('acion')}></div>
+        <div className={cx('action')}>
+          <Button to="/upload">
+            <img src={images.icon_add} className={cx('icon-add')} alt="" />
+            Tải lên
+          </Button>
+          <Button primary>Đăng nhập</Button>
+          <Button primary rounded className={cx('custom')}>
+            Đăng nhập
+          </Button>
+        </div>
       </div>
     </header>
   );
