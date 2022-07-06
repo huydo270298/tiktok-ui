@@ -8,7 +8,24 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+  {
+    icon_src: images.icon_lang,
+    title: 'Tiếng Việt',
+  },
+  {
+    icon_src: images.icon_question,
+    title: 'Phản hồi và trợ giúp',
+    to: '/feedback',
+  },
+  {
+    icon_src: images.icon_keyboard,
+    title: 'Phím tắt trên bàn phím',
+  },
+];
 
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
@@ -22,9 +39,7 @@ function Header() {
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <div className={cx('logo')}>
-          <img src={images.logo} alt="Tiktok" />
-        </div>
+        <img src={images.logo} className={cx('logo')} alt="Tiktok" />
         <Tippy
           visible={searchResult.length > 0}
           interactive
@@ -74,14 +89,16 @@ function Header() {
           </div>
         </Tippy>
         <div className={cx('action')}>
-          <Button to="/upload">
+          <Button normal to="/upload">
             <img src={images.icon_add} className={cx('icon-add')} alt="" />
             Tải lên
           </Button>
           <Button primary>Đăng nhập</Button>
-          <Button primary rounded className={cx('custom')}>
-            Đăng nhập
-          </Button>
+          <Menu items={MENU_ITEMS}>
+            <button className={cx('btn-more')}>
+              <img src={images.icon_more} alt="" />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>

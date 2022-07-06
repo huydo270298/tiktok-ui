@@ -4,7 +4,7 @@ import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Button({ to, href, primary, outline, rounded, disabled, className, onClick, children, ...passProps }) {
+function Button({ to, href, normal, primary, outline, rounded, disabled, className, onClick, children, ...passProps }) {
   let Comp = 'button';
 
   const props = {
@@ -23,6 +23,7 @@ function Button({ to, href, primary, outline, rounded, disabled, className, onCl
 
   const classes = cx('wrapper', {
     [className]: className,
+    normal,
     primary,
     outline,
     rounded,
