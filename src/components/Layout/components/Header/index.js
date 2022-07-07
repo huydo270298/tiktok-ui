@@ -15,6 +15,19 @@ const MENU_ITEMS = [
   {
     icon_src: images.icon_lang,
     title: 'Tiếng Việt',
+    children: {
+      title: 'Ngôn ngữ',
+      data: [
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+      ],
+    },
   },
   {
     icon_src: images.icon_question,
@@ -35,6 +48,11 @@ function Header() {
       setSearchResult([]);
     }, 0);
   }, []);
+
+  // handle logic
+  const handleMenuChange = (menuItem) => {
+    console.log(menuItem);
+  };
 
   return (
     <header className={cx('wrapper')}>
@@ -94,7 +112,7 @@ function Header() {
             Tải lên
           </Button>
           <Button primary>Đăng nhập</Button>
-          <Menu items={MENU_ITEMS}>
+          <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
             <button className={cx('btn-more')}>
               <img src={images.icon_more} alt="" />
             </button>

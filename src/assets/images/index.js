@@ -8,6 +8,7 @@ const images = {
   icon_lang: require('~/assets/images/icon_lang.svg').default,
   icon_question: require('~/assets/images/icon_question.svg').default,
   icon_keyboard: require('~/assets/images/icon_keyboard.svg').default,
+  icon_back: require('~/assets/images/icon_back.svg').default,
 };
 
 export default images;
