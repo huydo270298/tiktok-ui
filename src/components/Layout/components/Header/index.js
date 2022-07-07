@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.scss';
@@ -40,6 +41,31 @@ const MENU_ITEMS = [
   },
 ];
 
+const userMenu = [
+  {
+    icon_src: images.icon_profile,
+    title: 'Xem hồ sơ',
+    to: '/profile',
+  },
+  {
+    icon_src: images.icon_coin,
+    title: 'Nhận xu',
+    to: '/coin',
+  },
+  {
+    icon_src: images.icon_setting,
+    title: 'Cài đặt',
+    to: '/setting',
+  },
+  ...MENU_ITEMS,
+  {
+    icon_src: images.icon_out,
+    title: 'Đăng xuất',
+    to: '/logout',
+    separate: true,
+  },
+];
+
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
 
@@ -54,11 +80,13 @@ function Header() {
     console.log(menuItem);
   };
 
+  const currentUser = true;
+
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
         <img src={images.logo} className={cx('logo')} alt="Tiktok" />
-        <Tippy
+        <HeadlessTippy
           visible={searchResult.length > 0}
           interactive
           render={(attrs) => (
@@ -105,17 +133,42 @@ function Header() {
               </i>
             </button>
           </div>
-        </Tippy>
+        </HeadlessTippy>
         <div className={cx('action')}>
           <Button normal to="/upload">
             <img src={images.icon_add} className={cx('icon-add')} alt="" />
             Tải lên
           </Button>
-          <Button primary>Đăng nhập</Button>
-          <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-            <button className={cx('btn-more')}>
-              <img src={images.icon_more} alt="" />
-            </button>
+          {currentUser ? (
+            <>
+              <Tippy content="Tin nhắn" delay={[0, 0]}>
+                <button className={cx('action-btn')}>
+                  <img src={images.icon_mes} className={cx('img-mes')} alt="" />
+                </button>
+              </Tippy>
+              <Tippy content="Hộp thư" delay={[0, 0]}>
+                <button className={cx('action-btn')}>
+                  <img src={images.icon_mail} alt="" />
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Button primary>Đăng nhập</Button>
+            </>
+          )}
+          <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+            {currentUser ? (
+              <img
+                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/7e2ecb5db8a905abccfa9a2a30b16c3b~c5_100x100.jpeg?x-expires=1657339200&x-signature=F38jzRcFizOk%2FFLTJAYmRl8uICU%3D"
+                className={cx('user-avatar')}
+                alt="nguyenvana"
+              />
+            ) : (
+              <button className={cx('btn-more')}>
+                <img src={images.icon_more} alt="" />
+              </button>
+            )}
           </Menu>
         </div>
       </div>

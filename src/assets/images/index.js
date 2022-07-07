@@ -9,6 +9,12 @@ const images = {
   icon_question: require('~/assets/images/icon_question.svg').default,
   icon_keyboard: require('~/assets/images/icon_keyboard.svg').default,
   icon_back: require('~/assets/images/icon_back.svg').default,
+  icon_mes: require('~/assets/images/icon_mes.svg').default,
+  icon_mail: require('~/assets/images/icon_mail.svg').default,
+  icon_profile: require('~/assets/images/icon_profile.svg').default,
+  icon_coin: require('~/assets/images/icon_coin.svg').default,
+  icon_setting: require('~/assets/images/icon_setting.svg').default,
+  icon_out: require('~/assets/images/icon_out.svg').default,
 };
 
 export default images;

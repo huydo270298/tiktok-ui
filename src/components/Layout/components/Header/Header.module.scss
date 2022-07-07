@@ -99,6 +99,7 @@
 
 .action {
   display: flex;
+  align-items: center;
   gap: 16px;
 }
 
@@ -110,4 +111,27 @@
     width: 20px;
     height: 20px;
   }
+}
+.action-btn {
+  font-size: 0;
+  background: transparent;
+
+  img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+  }
+
+  .img-mes {
+    width: 26px;
+    height: 26px;
+    padding: 3px;
+    box-sizing: content-box;
+  }
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }

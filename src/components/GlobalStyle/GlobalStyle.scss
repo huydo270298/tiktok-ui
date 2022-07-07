@@ -21,6 +21,7 @@ body {
   font-size: 14px;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
+  overflow-y: overlay;
 }
 
 input,
@@ -54,4 +55,27 @@ button {
 ::-webkit-scrollbar-track {
   border-radius: 0;
   background-color: rgba(0, 0, 0, 0);
+}
+
+// custom tippy tooltip
+
+.tippy-content {
+  padding: 8px;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  color: var(--white);
+  border-radius: 8px;
+  background-color: rgba(84, 84, 84, 0.92);
+}
+
+.tippy-arrow {
+  display: block;
+  width: 36px;
+  height: 8px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDM2IDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDhoNi42ODZhOCA4IDAgMCAwIDUuNjU3LTIuMzQzbDQuOTUtNC45NWExIDEgMCAwIDEgMS40MTQgMGw0Ljk1IDQuOTVBOCA4IDAgMCAwIDI5LjMxNCA4SDM2IDB6IiBmaWxsPSIjNTQ1NDU0IiBmaWxsLW9wYWNpdHk9Ii45MiIvPjwvc3ZnPg==);
+  top: -8px;
+  left: 50% !important;
+  transform: translateX(0) !important;
+  margin-left: -18px;
 }
