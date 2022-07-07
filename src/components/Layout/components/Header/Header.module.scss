@@ -70,11 +70,6 @@
   display: inline-block;
 }
 
-.icon-search {
-  width: 24px;
-  height: 24px;
-}
-
 .icon-reset {
   width: 16px;
   height: 16px;
@@ -90,11 +85,6 @@
   line-height: 20px;
   font-weight: 600;
   color: rgba(22, 24, 35, 0.5);
-}
-
-.icon-add {
-  width: 20px;
-  height: 20px;
 }
 
 .action {
@@ -122,9 +112,7 @@
     object-fit: cover;
   }
 
-  .img-mes {
-    width: 26px;
-    height: 26px;
+  .icon-mes {
     padding: 3px;
     box-sizing: content-box;
   }

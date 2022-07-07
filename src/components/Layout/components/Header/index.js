@@ -10,6 +10,9 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import { AddIcon, MailIcon, MesIcon, ResetSearchIcon, SearchIcon } from '~/components/Icons';
+import Image from '~/components/Image';
+
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -120,35 +123,29 @@ function Header() {
           <div className={cx('search')}>
             <input placeholder="Tìm kiếm tài khoản và video" spellCheck="false" />
             <button className={cx('clear')}>
-              <i className={cx('icon-reset')}>
-                <img src={images.icon_search_reset} alt="" />
-              </i>
-              {/* <FontAwesomeIcon icon={faCircleXmark} /> */}
+              <ResetSearchIcon />
             </button>
-            {/*  <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
             <span className={cx('bar')}></span>
             <button className={cx('search-btn')}>
-              <i className={cx('icon-search')}>
-                <img src={images.icon_search} alt="" />
-              </i>
+              <SearchIcon className={cx('icon-search')} />
             </button>
           </div>
         </HeadlessTippy>
         <div className={cx('action')}>
           <Button normal to="/upload">
-            <img src={images.icon_add} className={cx('icon-add')} alt="" />
+            <AddIcon />
             Tải lên
           </Button>
           {currentUser ? (
             <>
               <Tippy content="Tin nhắn" delay={[0, 0]}>
                 <button className={cx('action-btn')}>
-                  <img src={images.icon_mes} className={cx('img-mes')} alt="" />
+                  <MesIcon className={cx('icon-mes')} />
                 </button>
               </Tippy>
               <Tippy content="Hộp thư" delay={[0, 0]}>
                 <button className={cx('action-btn')}>
-                  <img src={images.icon_mail} alt="" />
+                  <MailIcon />
                 </button>
               </Tippy>
             </>
@@ -159,7 +156,7 @@ function Header() {
           )}
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <Image
                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/7e2ecb5db8a905abccfa9a2a30b16c3b~c5_100x100.jpeg?x-expires=1657339200&x-signature=F38jzRcFizOk%2FFLTJAYmRl8uICU%3D"
                 className={cx('user-avatar')}
                 alt="nguyenvana"
