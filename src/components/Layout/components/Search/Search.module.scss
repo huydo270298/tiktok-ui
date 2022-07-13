@@ -28,9 +28,20 @@
   }
 }
 
-.clear {
+.clear,
+.loading {
   font-size: 0;
   margin: 0 12px;
+}
+
+.loading {
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .bar {
