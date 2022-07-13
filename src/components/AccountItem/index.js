@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import images from '~/assets/images';
+import Image from '../Image';
 import styles from './AccountItem.module.scss';
 
 const cx = classNames.bind(styles);
@@ -7,9 +8,9 @@ const cx = classNames.bind(styles);
 function AccountItem() {
   return (
     <div className={cx('wrapper')}>
-      <img
+      <Image
         className={cx('avatar')}
-        src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f75993e97bd5424690cb3c702fc88b0d~c5_100x100.jpeg?x-expires=1657173600&x-signature=aIGHgDxe8NXk1vTQ5rhxybk6r1k%3D"
+        src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/02cda9089360645c1b1c60e1c186cc68.jpeg?x-expires=1657850400&x-signature=Xm6QXVeOreZNeintCKUEvuqfRUw%3D"
         alt=""
       />
       <div className={cx('info')}>

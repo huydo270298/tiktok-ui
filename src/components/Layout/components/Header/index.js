@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-import { AddIcon, MailIcon, MesIcon, ResetSearchIcon, SearchIcon } from '~/components/Icons';
+import { AddIcon, MailIcon, MesIcon } from '~/components/Icons';
 import Image from '~/components/Image';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
@@ -70,14 +67,6 @@ const userMenu = [
 ];
 
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
-
   // handle logic
   const handleMenuChange = (menuItem) => {
     console.log(menuItem);
@@ -89,48 +78,7 @@ function Header() {
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
         <img src={images.logo} className={cx('logo')} alt="Tiktok" />
-        <HeadlessTippy
-          visible={searchResult.length > 0}
-          interactive
-          render={(attrs) => (
-            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx('search-title')}>Accounts</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx('search')}>
-            <input placeholder="Tìm kiếm tài khoản và video" spellCheck="false" />
-            <button className={cx('clear')}>
-              <ResetSearchIcon />
-            </button>
-            <span className={cx('bar')}></span>
-            <button className={cx('search-btn')}>
-              <SearchIcon className={cx('icon-search')} />
-            </button>
-          </div>
-        </HeadlessTippy>
+        <Search />
         <div className={cx('action')}>
           <Button normal to="/upload">
             <AddIcon />
@@ -157,7 +105,7 @@ function Header() {
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
               <Image
-                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/7e2ecb5db8a905abccfa9a2a30b16c3b~c5_100x100.jpeg?x-expires=1657339200&x-signature=F38jzRcFizOk%2FFLTJAYmRl8uICU%3D"
+                src="https://p77-sign-va.tiktokcdn.com/tos-maliva-avt-0068/4909c3fc0d2db92205c93218874063ab~c5_100x100.jpeg?x-expires=1657850400&x-signature=fH8ot275%2BdtXSLkMCCbERu%2FpVfQ%3D"
                 className={cx('user-avatar')}
                 alt="nguyenvana"
               />
