@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
+import { useEffect, useRef, useState } from 'react';
 
 import request from '~/utils/request';
 import styles from './Search.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-import { useEffect, useRef, useState } from 'react';
 import { LoadingSearchIcon, ResetSearchIcon, SearchIcon } from '~/components/Icons';
 import { useDebounced } from '~/hooks';
 
