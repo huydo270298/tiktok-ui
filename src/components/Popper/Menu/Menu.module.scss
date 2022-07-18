@@ -22,7 +22,15 @@
 }
 
 .menu-popper {
+  display: flex;
+  flex-direction: column;
   padding-bottom: 8px;
+}
+
+.menu-body {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .header {
@@ -30,6 +38,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  flex-shrink: 0;
   height: 50px;
   margin-top: -8px;
 }
