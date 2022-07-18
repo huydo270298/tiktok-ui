@@ -1,10 +1,13 @@
 import classNames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
+
+import request from '~/utils/request';
 import styles from './Search.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { useEffect, useRef, useState } from 'react';
 import { LoadingSearchIcon, ResetSearchIcon, SearchIcon } from '~/components/Icons';
+import { useDebounced } from '~/hooks';
 
 const cx = classNames.bind(styles);
 
@@ -16,28 +19,42 @@ function Search() {
 
   const inputRef = useRef();
 
+  const debounced = useDebounced(searchValue, 500);
+
   useEffect(() => {
-    if (!searchValue.trim()) {
+    if (!debounced.trim()) {
       setSearchResult([]);
       return;
     }
 
     setLoading(true);
 
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-      .then((res) => res.json())
+    request
+      .get('users/search', {
+        params: {
+          q: debounced,
+          type: 'less',
+        },
+      })
+
       .then((res) => {
-        setSearchResult(res.data);
+        setSearchResult(res.data.data);
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [searchValue]);
+  }, [debounced]);
 
   const handleClear = () => {
     setSearchValue('');
     setSearchResult([]);
     inputRef.current.focus();
   };
+
+  const handleChange = (e) => {
+    const searchValue = e.target.value;
+    if (!searchValue.startsWith(' ')) setSearchValue(searchValue);
+  };
+
   return (
     <HeadlessTippy
       visible={showResult && searchResult.length > 0}
@@ -60,7 +77,7 @@ function Search() {
           value={searchValue}
           placeholder="Tìm kiếm tài khoản và video"
           spellCheck="false"
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={handleChange}
           onFocus={() => setShowResult(true)}
         />
 
@@ -77,7 +94,7 @@ function Search() {
         )}
 
         <span className={cx('bar')}></span>
-        <button className={cx('search-btn')}>
+        <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
           <SearchIcon className={cx('icon-search')} />
         </button>
       </div>
