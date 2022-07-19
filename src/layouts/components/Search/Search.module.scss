@@ -17,6 +17,10 @@
     background-color: transparent;
     caret-color: var(--primary);
 
+    // &::placeholder {
+    //   color: #757575;
+    // }
+
     &:not(:placeholder-shown) ~ .search-btn {
       svg {
         fill: rgba(22, 24, 35, 0.75);

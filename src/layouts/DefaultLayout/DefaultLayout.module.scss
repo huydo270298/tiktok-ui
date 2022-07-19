@@ -9,6 +9,7 @@
 .container {
   display: flex;
   width: 1150px;
+  max-width: 100%;
   min-height: 1000px;
   justify-content: space-between;
 }
